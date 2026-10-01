@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+
+{% block content%}
+
+<br>
+
+<div class="row">
+     {% for flan in flanes %}
+      <div class="col-lg-3 col-md-6 mb-4">
+         <div class="card h-100 shadow">
+             <!-- Imagen --> <img src="{{ flan.image_url }}" class="card-img-top" alt="{{ flan.name }}" style="height: 220px; object-fit: cover;">
+              <div class="card-body d-flex flex-column"> 
+                <!-- Nombre --> <h5 class="card-title"> {{ flan.name }} </h5>
+
+                 <!-- Descripción --><p class="card-text"> {{ flan.description }} </p>
+               
+                 </div>
+                 </div> 
+                </div> 
+                {% empty %} 
+                <div class="col-12"> 
+                    <div class="alert alert-info text-center"> No hay flanes disponibles. 
+
+                    </div> 
+                </div> 
+                {% endfor %}
+             </div>
+{% endblock %}

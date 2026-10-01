@@ -1,0 +1,6 @@
+.navbar .nav-link.active {
+    color: #ff6600 !important;       /* Color */
+    font-size: 20px;                 /* Más grande */
+    font-weight: bold;               /* Negrita */
+    border-bottom: 3px solid #ff6600; /* Línea inferior */
+}

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link  {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {% if request.resolver_match.url_name == 'bienvenido' %}active{% endif %}" aria-current="page" href="{% url 'bienvenido' %}">Bienvenido</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'acerca' %}active{% endif %}" href="{% url 'acerca' %}">Acerca</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'contacto' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a>
+                    </li>
+
+                     {% if  request.user.is_superuser  %}
+                       <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'lista_contactos' %}active{% endif %}" href="{% url 'lista_contactos' %}">Lista Contactos</a>
+                        </li>
+                      {% endif %}
+
+                     {% if  request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'logout' %}" class="d-inline"> 
+                                {% csrf_token %}
+                                 <button type="submit" class="btn btn-outline-danger">
+                                     Cerrar sesión 
+                                    </button> 
+                                </form>
+                         </li>
+                      {% else %}
+                        <li class="nav-item">
+                             <a href="/login" class="btn btn-outline-success me-2" type="button">
+                                     Login
+                             </a>
+                        </li>
+                      {% endif %}
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
